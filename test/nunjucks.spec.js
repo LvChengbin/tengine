@@ -9,14 +9,18 @@ describe( 'Nunjucks', () => {
                 autoescape : false
             },
             filters : {
-                repeat : str => str + str
+                repeat : str => str + str,
+                times : {
+                    filter : ( n, callback ) => callback(),
+                    async : true
+                }
             },
             globals : {
                 engine : 'nunjucks'
             }
         } );
 
-        expect( engine.renderString( '<{{title}}>{{engine | repeat()}}', {
+        expect( engine.renderString( '<{{title}}>{{engine | repeat()}}{{2 | times}}', {
             title : 'tengine'
         } ) ).resolves.toEqual( '<tengine>nunjucksnunjucks' );
     } );
