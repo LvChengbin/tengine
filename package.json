@@ -2,7 +2,7 @@
     "name": "tengine",
     "version": "0.0.0",
     "description": "Unifying APIs of various of template engines.",
-    "main": "index.js",
+    "main": "lib/index.js",
     "scripts": {
         "test": "jest",
         "test-watch": "jest --watch",

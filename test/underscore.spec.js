@@ -1,9 +1,9 @@
 const path = require( 'path' );
-const Engine = require( '../lib/engines/underscore' );
+const tengine = require( '../lib' );
 
 describe( 'Underscore', () => {
     it( 'renderString', () => {
-        const engine = new Engine();
+        const engine = tengine.engine( 'underscore' );
         engine.configure( {
             interpolate: /\{\{(.+?)\}\}/g
         } );
@@ -14,7 +14,7 @@ describe( 'Underscore', () => {
     } );
 
     it( 'render', () => {
-        const engine = new Engine( path.join( __dirname, 'templates', 'underscore' ) );
+        const engine = tengine.engine( 'underscore', path.join( __dirname, 'templates', 'underscore' ) );
             
         expect( engine.render( 'index.html', {
             title : 'underscore'

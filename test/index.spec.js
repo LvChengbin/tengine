@@ -1,11 +1,21 @@
 const path = require( 'path' );
 const is = require( '@lvchengbin/is' );
-const engines = require( '../lib/engines' );
+const tengine = require( '../lib' );
+
+describe( 'Supported engines', () => {
+    const list = [ 'nunjucks', 'underscore' ];
+
+    for( const name of list ) {
+        it( `should support ${name}`, () => {
+            expect( tengine.engines[ name ] ).toBeDefined(); 
+        } ); 
+    }
+} );
 
 describe( 'Basic APIs', () => {
-    for( const name in engines ) {
+    for( const name in tengine.engines ) {
         describe( name, () => {
-            const engine = new engines[ name ]( path.join( __dirname, 'templates' ) );
+            const engine = tengine.engine( name, path.join( __dirname, 'templates' ) );
 
             it( 'configure', () => {
                 expect( is.function( engine.configure ) ).toBeTruthy(); 
@@ -21,4 +31,6 @@ describe( 'Basic APIs', () => {
         
         } );
     } 
+
+
 } );

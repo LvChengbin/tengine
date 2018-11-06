@@ -1,9 +1,9 @@
 const path = require( 'path' );
-const Engine = require( '../lib/engines/nunjucks' );
+const tengine = require( '../lib' );
 
 describe( 'Nunjucks', () => {
     it( 'renderString', () => {
-        const engine = new Engine();
+        const engine = tengine.engine( 'nunjucks' );
         engine.configure( {
             config : {
                 autoescape : false
@@ -22,7 +22,7 @@ describe( 'Nunjucks', () => {
     } );
 
     it( 'render', () => {
-        const engine = new Engine( path.join( __dirname, 'templates', 'nunjucks' ) );
+        const engine = tengine.engine( 'nunjucks', path.join( __dirname, 'templates', 'nunjucks' ) );
             
         expect( engine.render( 'index.html', {
             title : 'nunjucks'
