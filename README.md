@@ -10,7 +10,7 @@ $ npm install tengine --save
 ## Supported template engines
 
  - [x] [doT.js](https://github.com/olado/doT) [(website)](http://olado.github.io/doT/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/doT.js)
- - [ ] [dustjs-linkedin](https://github.com/linkedin/dustjs) [(website)](http://linkedin.github.io/dustjs/)
+ - [x] [dustjs-linkedin](https://github.com/linkedin/dustjs) [(website)](http://linkedin.github.io/dustjs/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/dust.js)
  - [ ] [eco](https://github.com/sstephenson/eco)
  - [ ] [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
  - [ ] [ejs](https://github.com/mde/ejs) [(website)](http://ejs.co/)

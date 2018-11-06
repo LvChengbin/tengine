@@ -3,7 +3,7 @@ const is = require( '@lvchengbin/is' );
 const tengine = require( '../lib' );
 
 describe( 'Supported engines', () => {
-    const list = [ 'nunjucks', 'underscore', 'doT' ];
+    const list = [ 'nunjucks', 'underscore', 'doT', 'dust' ];
 
     for( const name of list ) {
         it( `should support ${name}`, () => {
