@@ -46,7 +46,7 @@ describe( 'Supported engines', () => {
 describe( 'Basic APIs', () => {
 
     it( 'calling with unsupported template engine', () => {
-        expect( () => tengine( 'unsupported' )  ).toThrow();
+        expect( tengine( 'unsupported' )  ).toBeFalsy();
     } );
 
     for( const name of Object.keys( list ) ) {

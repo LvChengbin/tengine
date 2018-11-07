@@ -1,6 +1,6 @@
 {
     "name": "tengine",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Unifying APIs of various of template engines.",
     "main": "lib/index.js",
     "scripts": {
@@ -24,7 +24,14 @@
         "render",
         "tpl",
         "view",
-        "engine"
+        "engine",
+        "nunjucks",
+        "underscore",
+        "doT",
+        "jade",
+        "html",
+        "mustache",
+        "ejs"
     ],
     "author": "LvChengbin <lvchengbin59@gmail.com>",
     "license": "MIT",

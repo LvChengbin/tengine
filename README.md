@@ -1,4 +1,4 @@
-# tengine
+# Tengine
 Unifying APIs of various of template engines.
 
  [![Build Status](https://travis-ci.com/LvChengbin/tengine.svg?branch=master)](https://travis-ci.com/LvChengbin/tengine)
@@ -12,6 +12,33 @@ Unifying APIs of various of template engines.
 
 ```sh
 $ npm install tengine --save
+```
+
+## Usage
+
+```js
+const path = require( 'path' );
+const tengine = require( 'tengine' );
+
+const engine = tengine( 'nunjucks' );
+
+engine.configure( {
+    config : {
+        autoescape : false
+    },
+    filters : {
+        repeat : str => str + str
+    }
+} );
+
+engine.globals = { engine : 'tengine' };
+eigine.base = path.join( __dirname, 'templates' );
+
+engine.render( 'index.html', {
+    title : 'tengine'
+} ).then( res => {
+    console.log( res );
+} );
 ```
 
 ## Supported template engines
