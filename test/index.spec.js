@@ -1,4 +1,5 @@
 const path = require( 'path' );
+const underscore = require( 'underscore' );
 const is = require( '@lvchengbin/is' );
 const Engine = require( '../lib/engine' );
 const tengine = require( '../lib' );
@@ -47,6 +48,11 @@ describe( 'Basic APIs', () => {
 
     it( 'calling with unsupported template engine', () => {
         expect( tengine( 'unsupported' )  ).toBeFalsy();
+    } );
+
+    it( 'should use the specific template engine', () => {
+        const engine = tengine( 'underscore', underscore );
+        expect( engine.engine ).toEqual( underscore ); 
     } );
 
     for( const name of Object.keys( list ) ) {
