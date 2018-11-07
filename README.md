@@ -9,8 +9,8 @@ $ npm install tengine --save
 
 ## Supported template engines
 
- - [x] [doT.js](https://github.com/olado/doT) [(website)](http://olado.github.io/doT/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/doT.js)
- - [x] [dustjs-linkedin](https://github.com/linkedin/dustjs) [(website)](http://linkedin.github.io/dustjs/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/dust.js)
+ - [x] [doT](https://github.com/olado/doT) [(website)](http://olado.github.io/doT/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/doT.js)
+ - [x] [dust](https://github.com/linkedin/dustjs) [(website)](http://linkedin.github.io/dustjs/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/dust.js)
  - [ ] [eco](https://github.com/sstephenson/eco)
  - [ ] [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
  - [x] [ejs](https://github.com/mde/ejs) [(website)](http://ejs.co/)
@@ -28,12 +28,12 @@ $ npm install tengine --save
  - [x] [mustache](https://github.com/janl/mustache.js) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/mustache.js)
  - [x] [nunjucks](https://github.com/mozilla/nunjucks) [(website)](https://mozilla.github.io/nunjucks) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/nunjucks.js)
  - [ ] [plates](https://github.com/flatiron/plates)
- - [ ] [pug (formerly jade)](https://github.com/pugjs/pug) [(website)](http://jade-lang.com/)
+ - [ ] [pug](https://github.com/pugjs/pug) [(website)](http://jade-lang.com/)
  - [ ] [ractive](https://github.com/Rich-Harris/Ractive)
  - [ ] [react](https://github.com/facebook/react)
  - [ ] [slm](https://github.com/slm-lang/slm)
- - [ ] [swig (maintained fork)](https://github.com/node-swig/swig-templates)
- - [ ] [swig (unmaintained)](https://github.com/paularmstrong/swig)
+ - [ ] [swig-templates](https://github.com/node-swig/swig-templates)
+ - [ ] [swig](https://github.com/paularmstrong/swig)
  - [ ] [teacup](https://github.com/goodeggs/teacup)
  - [ ] [templayed](http://archan937.github.com/templayed.js/)
  - [ ] [toffee](https://github.com/malgorithms/toffee)
@@ -45,21 +45,68 @@ $ npm install tengine --save
 
 ## APIs
 
-### tengine( name, engine )
+### tengine( string name[, object engine ] )
 
-### Engine.global 
+ - name: the name of the template engine, see [Supported template engines](#)
+ - engine: to specify another template engine for replacing the default engine.
 
-### Engine.base
+```js
+const engine = tengine( 'doT' );
+```
 
-### Engine.engine
+```js
+const nunjucks = require( 'nunjucks' );
+const engine = tengine( 'nunjucks', nunjucks );
+```
 
-### Engins.path( name )
+To initialize a template Engine
 
-### Engine.context( data )
+### engine.global 
 
-### Engine.configure( options )
+Global variables for templates.
 
-### Engine.render( file, context )
+```js
+const engine = require( 'underscore' );
 
-### Engine.renderString( str, context )
+engine.global = {
+    title : 'global title'    
+}
 
+engine.renderString( '<%-title %>' ).then( res => {
+    console.log( res ); // output: global title
+} );
+```
+
+### engine.base
+
+The base directory of template files
+
+```js
+const engine = tengine( 'ejs' );
+engine.base = '/path/to/ejs/template/directory';
+engine.render( 'index.html' );
+```
+
+### engine.engine
+
+The template engine instance.
+
+### engins.path( name )
+
+To get the full path of a template file in base direcotry.
+
+### engine.context( data )
+
+To get the context data which will includes the global variables if exists.
+
+### engine.configure( options )
+
+Configuring the template engines.
+
+### engine.render( file, context )
+
+Rendering a template file.
+
+### engine.renderString( str, context )
+
+Rendering template string.

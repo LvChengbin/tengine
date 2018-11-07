@@ -1,12 +1,12 @@
 const tengine = require( '../lib' );
 
-const engine = tengine( 'ejs', 'path/to/templates' );
+const engine = tengine( 'mustache', 'path/to/templates' );
 
 engine.configure( {
-    delimiter : '?'
+    tags : [ '<%', '%>' ]
 } );
 
-engine.renderString( '<?=title ?>', { title : 'tengine' } ).then( res => {
+engine.renderString( '<% title %>', { title : 'tengine' } ).then( res => {
     console.log( res );
 } );
 
