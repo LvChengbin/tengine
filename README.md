@@ -1,6 +1,13 @@
 # tengine
 Unifying APIs of various of template engines.
 
+ [![Build Status](https://travis-ci.com/LvChengbin/tengine.svg?branch=master)](https://travis-ci.com/LvChengbin/tengine)
+ [![Coverage Status](https://img.shields.io/codecov/c/github/LvChengbin/tengine.svg?style=flat)](https://codecov.io/gh/LvChengbin/tengine)
+ [![Node Version](https://img.shields.io/node/v/tengine.svg)](https://nodejs.org)
+ [![License](https://img.shields.io/npm/l/tengine.svg)](https://en.wikipedia.org/wiki/MIT_License)
+ [![NPM Version](https://img.shields.io/npm/v/tengine.svg)](https://www.npmjs.com/package/tengine)
+ [![NPM Download](https://img.shields.io/npm/dw/tengine.svg)](https://www.npmjs.com/package/tengine)
+
 ## Installation
 
 ```sh

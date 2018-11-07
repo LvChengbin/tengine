@@ -23,10 +23,6 @@
     },
     "rules": {
         "no-console" : 0,
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
         "quotes": [ "error", "single" ],
         "semi": [ 0 ]
     }
