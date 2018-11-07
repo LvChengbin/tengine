@@ -3,7 +3,7 @@ const tengine = require( '../lib' );
 
 describe( 'Nunjucks', () => {
     it( 'renderString', () => {
-        const engine = tengine.engine( 'nunjucks' );
+        const engine = tengine( 'nunjucks' );
         engine.configure( {
             config : {
                 autoescape : false
@@ -20,16 +20,18 @@ describe( 'Nunjucks', () => {
             }
         } );
 
-        expect( engine.renderString( '<{{title}}>{{engine | repeat()}}{{2 | times}}', {
+        return expect( engine.renderString( '<{{title}}>{{engine | repeat()}}{{2 | times}}', {
             title : 'tengine'
-        } ) ).resolves.toEqual( '<tengine>nunjucksnunjucks' );
+        } ) ).resolves.toBe( '<tengine>nunjucksnunjucks' );
     } );
 
     it( 'render', () => {
-        const engine = tengine.engine( 'nunjucks', path.join( __dirname, 'templates', 'nunjucks' ) );
+        const engine = tengine( 'nunjucks' );
+        
+        engine.base = path.join( __dirname, 'templates', 'nunjucks' );
             
-        expect( engine.render( 'index.html', {
+        return expect( engine.render( 'index.html', {
             title : 'nunjucks'
-        } ) ).resolves.toEqual( 'nunjucks\n' );
+        } ) ).resolves.toBe( 'nunjucks\n' );
     } );
 } );

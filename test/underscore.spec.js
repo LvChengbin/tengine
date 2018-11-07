@@ -3,22 +3,24 @@ const tengine = require( '../lib' );
 
 describe( 'Underscore', () => {
     it( 'renderString', () => {
-        const engine = tengine.engine( 'underscore' );
+        const engine = tengine( 'underscore' );
         engine.configure( {
             interpolate: /\{\{(.+?)\}\}/g
         } );
 
-        expect( engine.renderString( '{{engine}}', {
+        return expect( engine.renderString( '{{engine}}', {
             engine : 'tengine'
-        } ) ).resolves.toEqual( 'tengine' );
+        } ) ).resolves.toBe( 'tengine' );
     } );
 
     it( 'render', () => {
-        const engine = tengine.engine( 'underscore', path.join( __dirname, 'templates', 'underscore' ) );
+        const engine = tengine( 'underscore' );
+        
+        engine.base = path.join( __dirname, 'templates', 'underscore' );
             
-        expect( engine.render( 'index.html', {
+        return expect( engine.render( 'index.html', {
             title : 'underscore'
-        } ) ).resolves.toEqual( 'underscore\n' );
+        } ) ).resolves.toBe( 'underscore\n' );
     } );
 } );
 

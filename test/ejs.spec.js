@@ -3,21 +3,23 @@ const tengine = require( '../lib' );
 
 describe( 'ejs', () => {
     it( 'renderString', () => {
-        const engine = tengine.engine( 'ejs' );
+        const engine = tengine( 'ejs' );
         engine.configure( {
             delimiter : '?'
         } );
 
-        expect( engine.renderString( '<?=engine ?>', {
+        return expect( engine.renderString( '<?=engine ?>', {
             engine : 'tengine'
-        } ) ).resolves.toEqual( 'tengine' );
+        } ) ).resolves.toBe( 'tengine' );
     } );
 
     it( 'render', () => {
-        const engine = tengine.engine( 'ejs', path.join( __dirname, 'templates', 'ejs' ) );
+        const engine = tengine( 'ejs' );
+        
+        engine.base = path.join( __dirname, 'templates', 'ejs' );
             
-        expect( engine.render( 'index.html', {
+        return expect( engine.render( 'index.html', {
             title : 'ejs'
-        } ) ).resolves.toEqual( 'ejs\n' );
+        } ) ).resolves.toBe( 'ejs\n' );
     } );
 } );

@@ -3,23 +3,25 @@ const tengine = require( '../lib' );
 
 describe( 'dust', () => {
     it( 'renderString', () => {
-        const engine = tengine.engine( 'dust' ); 
+        const engine = tengine( 'dust' ); 
         engine.configure( {
             filters : {
                 repeat : v => v + v
             }
         } );
 
-        expect( engine.renderString( '{engine|repeat}', {
+        return expect( engine.renderString( '{engine|repeat}', {
             engine : 'tengine'
-        } ) ).resolves.toEqual( 'tenginetengine' );
+        } ) ).resolves.toBe( 'tenginetengine' );
     } ); 
 
     it( 'render', () => {
-        const engine = tengine.engine( 'dust', path.join( __dirname, 'templates', 'dust' ) );
+        const engine = tengine( 'dust' );
 
-        expect( engine.render( 'index.html', {
+        engine.base = path.join( __dirname, 'templates', 'dust' );
+
+        return expect( engine.render( 'index.html', {
             title : 'dust'
-        } ) ).resolves.toEqual( 'dust' );
+        } ) ).resolves.toBe( 'dust' );
     } );
 } );

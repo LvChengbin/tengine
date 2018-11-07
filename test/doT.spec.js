@@ -3,21 +3,23 @@ const tengine = require( '../lib' );
 
 describe( 'doT', () => {
     it( 'renderString', () => {
-        const engine = tengine.engine( 'doT' );
+        const engine = tengine( 'doT' );
         engine.configure( Object.assign( {}, engine.engine.templateSettings, {
             varname : 'x',
         } ) );
 
-        expect( engine.renderString( '{{=x.engine}}', {
+        return expect( engine.renderString( '{{=x.engine}}', {
             engine : 'tengine'
-        } ) ).resolves.toEqual( 'tengine' );
+        } ) ).resolves.toBe( 'tengine' );
     } );
 
     it( 'render', () => {
-        const engine = tengine.engine( 'doT', path.join( __dirname, 'templates', 'doT' ) );
+        const engine = tengine( 'doT' );
 
-        expect( engine.render( 'index.html', {
+        engine.base = path.join( __dirname, 'templates', 'doT' );
+
+        return expect( engine.render( 'index.html', {
             title : 'doT'
-        } ) ).resolves.toEqual( 'doT' );
+        } ) ).resolves.toBe( 'doT' );
     } );
 } );

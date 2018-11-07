@@ -1,36 +1,81 @@
 const path = require( 'path' );
 const is = require( '@lvchengbin/is' );
+const Engine = require( '../lib/engine' );
 const tengine = require( '../lib' );
 
-describe( 'Supported engines', () => {
-    const list = [ 'nunjucks', 'underscore', 'doT', 'dust' ];
+const list = { 
+    nunjucks : {
+        template : '{{engine}}-{{title}}',
+        output : 'tengine-nunjucks'
+    }, 
+    underscore : {
+        template : '<%-engine %>-<%-title %>',
+        output : 'tengine-underscore'
+    },
+    doT : {
+        template : '{{=it.engine}}-{{=it.title}}',
+        output : 'tengine-doT'
+    },
+    dust : {
+        template : '{engine}-{title}',
+        output : 'tengine-dust'
+    },
+    jade : {
+        template : 'title= engine\nh1= title',
+        output : '<title>tengine</title><h1>jade</h1>'
+    },
+    ejs : {
+        template : '<%=engine %>-<%=title %>',
+        output : 'tengine-ejs'
+    },
+    mustache : {
+        template : '{{engine}}-{{title}}',
+        output : 'tengine-mustache'
+    }
+};
 
-    for( const name of list ) {
+describe( 'Supported engines', () => {
+
+    for( const name of Object.keys( list ) ) {
         it( `should support ${name}`, () => {
-            expect( tengine.engines[ name ] ).toBeDefined(); 
+            expect( tengine( name ) instanceof Engine ).toBeTruthy(); 
         } ); 
     }
 } );
 
 describe( 'Basic APIs', () => {
-    for( const name in tengine.engines ) {
+    for( const name of Object.keys( list ) ) {
         describe( name, () => {
-            const engine = tengine.engine( name, path.join( __dirname, 'templates' ) );
+            const engine = tengine( name );
+
+            engine.base = path.join( __dirname, 'templates' );
 
             it( 'configure', () => {
                 expect( is.function( engine.configure ) ).toBeTruthy(); 
             } );
 
             it( 'render', () => {
-                expect( engine.render( 'index.html', {} ) ).resolves.toBe( '' ); 
+                return expect( engine.render( 'index.html', {} ) ).resolves.toBe( '' ); 
             } );
 
             it( 'renderString', () => {
-                expect( engine.renderString( '', {} ) ).resolves.toBe( '' );
+                return expect( engine.renderString( '', {} ) ).resolves.toBe( '' );
             } );
         
         } );
     } 
+} );
 
-
+describe( 'Compile with global variables', () => {
+    for( const name of Object.keys( list ) ) {
+        it( name, () => {
+            const engine = tengine( name );
+            engine.global = {
+                engine : 'tengine'
+            };
+            return expect( engine.renderString( list[ name ].template, {
+                title : name
+            } ) ).resolves.toBe( list[ name ].output );
+        } ); 
+    }
 } );

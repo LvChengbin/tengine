@@ -25,7 +25,7 @@ $ npm install tengine --save
  - [ ] [liquid](https://github.com/leizongmin/tinyliquid) [(website)](http://liquidmarkup.org/)
  - [ ] [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
  - [ ] [marko](https://github.com/marko-js/marko) [(website)](http://markojs.com)
- - [ ] [mustache](https://github.com/janl/mustache.js)
+ - [x] [mustache](https://github.com/janl/mustache.js) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/mustache.js)
  - [x] [nunjucks](https://github.com/mozilla/nunjucks) [(website)](https://mozilla.github.io/nunjucks) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/nunjucks.js)
  - [ ] [plates](https://github.com/flatiron/plates)
  - [ ] [pug (formerly jade)](https://github.com/pugjs/pug) [(website)](http://jade-lang.com/)
@@ -45,11 +45,21 @@ $ npm install tengine --save
 
 ## APIs
 
-### tengine.engine( name, [ base_dir ], engine )
+### tengine( name, engine )
 
-### engine.configure( options )
+### Engine.global 
 
-### engine.render( file, context )
+### Engine.base
 
-### engine.renderString( str, context )
+### Engine.engine
+
+### Engins.path( name )
+
+### Engine.context( data )
+
+### Engine.configure( options )
+
+### Engine.render( file, context )
+
+### Engine.renderString( str, context )
 
