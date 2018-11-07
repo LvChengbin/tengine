@@ -25,7 +25,7 @@ describe( 'mustache', () => {
 
         return expect( engine.render( 'index.html', {
             title : 'mustache'
-        } ) ).resolves.toBe( 'mustache\n' );
+        } ).then( o => o.trim() ) ).resolves.toBe( 'mustache' );
         
         
     } );

@@ -32,6 +32,6 @@ describe( 'Nunjucks', () => {
             
         return expect( engine.render( 'index.html', {
             title : 'nunjucks'
-        } ) ).resolves.toBe( 'nunjucks\n' );
+        } ).then( o => o.trim() )  ).resolves.toBe( 'nunjucks' );
     } );
 } );

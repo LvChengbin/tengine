@@ -20,6 +20,6 @@ describe( 'ejs', () => {
             
         return expect( engine.render( 'index.html', {
             title : 'ejs'
-        } ) ).resolves.toBe( 'ejs\n' );
+        } ).then( o => o.trim() ) ).resolves.toBe( 'ejs' );
     } );
 } );

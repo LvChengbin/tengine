@@ -20,7 +20,7 @@ describe( 'Underscore', () => {
             
         return expect( engine.render( 'index.html', {
             title : 'underscore'
-        } ) ).resolves.toBe( 'underscore\n' );
+        } ).then( o => o.trim() )  ).resolves.toBe( 'underscore' );
     } );
 } );
 
