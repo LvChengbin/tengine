@@ -81,6 +81,8 @@ engine.render( 'index.html', {
 
 ### tengine( string name[, object engine ] )
 
+To initialize a template Engine
+
  - name: the name of the template engine, see [Supported template engines](#)
  - engine: to specify another template engine for replacing the default engine.
 
@@ -93,7 +95,15 @@ const nunjucks = require( 'nunjucks' );
 const engine = tengine( 'nunjucks', nunjucks );
 ```
 
-To initialize a template Engine
+### tengine.support( name )
+
+to check if the template engine is supported in tengine.
+
+- name: the name of the template engine
+
+### tengine.engines
+
+An array of supported template engine's name.
 
 ### engine.global 
 
@@ -129,9 +139,13 @@ The template engine instance.
 
 To get the full path of a template file in base direcotry.
 
+- name: the file name of the template file.
+
 ### engine.context( data )
 
 To get the context data which will includes the global variables if exists.
+
+- the local context for compiling the template.
 
 ### engine.configure( options )
 
@@ -141,6 +155,12 @@ Configuring the template engines.
 
 Rendering a template file.
 
+ - file: the template file name.
+ - context: the context for the template
+
 ### engine.renderString( str, context )
 
 Rendering template string.
+
+ - str: the template string
+ - context: the context for compiling

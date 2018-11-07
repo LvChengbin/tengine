@@ -1,6 +1,6 @@
 {
     "name": "tengine",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "Unifying APIs of various of template engines.",
     "main": "lib/index.js",
     "scripts": {
@@ -42,7 +42,8 @@
     "devDependencies": {
         "eslint": "^5.8.0",
         "jest": "^23.6.0",
-        "pre-commit": "^1.2.2"
+        "pre-commit": "^1.2.2",
+        "uuid": "^3.3.2"
     },
     "jest": {
         "testMatch": [
