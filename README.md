@@ -6,7 +6,7 @@ Unifying APIs of various of template engines.
  [![Node Version](https://img.shields.io/node/v/tengine.svg)](https://nodejs.org)
  [![License](https://img.shields.io/npm/l/tengine.svg)](https://en.wikipedia.org/wiki/MIT_License)
  [![NPM Version](https://img.shields.io/npm/v/tengine.svg)](https://www.npmjs.com/package/tengine)
- [![NPM Download](https://img.shields.io/npm/dw/tengine.svg)](https://www.npmjs.com/package/tengine)
+ [![NPM Download](https://img.shields.io/npm/dw/tengine.svg)](https://www.npmjs.com/package/tengine) [![Greenkeeper badge](https://badges.greenkeeper.io/LvChengbin/tengine.svg)](https://greenkeeper.io/)
 
 ## Installation
 
