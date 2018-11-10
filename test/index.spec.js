@@ -35,6 +35,10 @@ const list = {
     mustache : {
         template : '{{engine}}-{{title}}',
         output : 'tengine-mustache'
+    },
+    lodash : {
+        template : '<%=engine %>-<%=title %>',
+        output : 'tengine-lodash'
     }
 };
 

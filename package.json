@@ -50,6 +50,7 @@
             "**/test/**/*.spec.js"
         ],
         "coverageReporters": [
+            "text-summary",
             "text",
             "lcov"
         ],

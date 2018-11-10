@@ -21,3 +21,11 @@ script:
 after_script:
     - npm install codecov
     - ./node_modules/.bin/codecov
+
+deploy:
+    - provider: npm
+      email: "lvchengbin59@gmail.com"
+      api_key: "25360aee-43c8-4c4f-baa7-b4cd5886c89a"
+      on:
+          branch: master
+          node: '10'

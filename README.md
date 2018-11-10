@@ -31,7 +31,7 @@ engine.configure( {
     }
 } );
 
-engine.globals = { engine : 'tengine' };
+engine.global = { engine : 'tengine' };
 eigine.base = path.join( __dirname, 'templates' );
 
 engine.render( 'index.html', {
@@ -57,7 +57,7 @@ engine.render( 'index.html', {
  - [ ] [jazz](https://github.com/shinetech/jazz)
  - [ ] [jqtpl](https://github.com/kof/jqtpl)
  - [ ] [liquid](https://github.com/leizongmin/tinyliquid) [(website)](http://liquidmarkup.org/)
- - [ ] [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
+ - [x] [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/lodash.js)
  - [ ] [marko](https://github.com/marko-js/marko) [(website)](http://markojs.com)
  - [x] [mustache](https://github.com/janl/mustache.js) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/mustache.js)
  - [x] [nunjucks](https://github.com/mozilla/nunjucks) [(website)](https://mozilla.github.io/nunjucks) [(example)](https://github.com/LvChengbin/tengine/blob/master/example/nunjucks.js)
@@ -95,7 +95,7 @@ const nunjucks = require( 'nunjucks' );
 const engine = tengine( 'nunjucks', nunjucks );
 ```
 
-### tengine.support( name )
+### tengine.support( string name )
 
 to check if the template engine is supported in tengine.
 
@@ -135,30 +135,30 @@ engine.render( 'index.html' );
 
 The template engine instance.
 
-### engins.path( name )
+### engins.path( string name )
 
 To get the full path of a template file in base direcotry.
 
 - name: the file name of the template file.
 
-### engine.context( data )
+### engine.context( object data )
 
 To get the context data which will includes the global variables if exists.
 
 - the local context for compiling the template.
 
-### engine.configure( options )
+### engine.configure( object options )
 
 Configuring the template engines.
 
-### engine.render( file, context )
+### engine.render( string file, object context )
 
 Rendering a template file.
 
  - file: the template file name.
  - context: the context for the template
 
-### engine.renderString( str, context )
+### engine.renderString( string str, object context )
 
 Rendering template string.
 
