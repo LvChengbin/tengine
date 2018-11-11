@@ -1,6 +1,6 @@
 {
     "name": "tengine",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Unifying APIs of various of template engines.",
     "main": "lib/index.js",
     "scripts": {
