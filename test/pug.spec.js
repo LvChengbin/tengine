@@ -1,9 +1,9 @@
 const path = require( 'path' );
 const tengine = require( '../lib' );
 
-describe( 'jade', () => {
+describe( 'pug', () => {
     it( 'renderString', () => {
-        const engine = tengine( 'jade' );
+        const engine = tengine( 'pug' );
 
         return expect( engine.renderString( 'title= engine', {
             engine : 'tengine'
@@ -11,17 +11,19 @@ describe( 'jade', () => {
     } );
 
     it( 'render', () => {
-        const engine = tengine( 'jade' );
+        const engine = tengine( 'pug' );
         
-        engine.base = path.join( __dirname, 'templates', 'jade' );
+        engine.base = path.join( __dirname, 'templates', 'pug' );
 
         engine.configure( {
             self : true
         } );
 
         return expect( engine.render( 'index.html', {
-            heading : 'jade'
-        } ) ).resolves.toBe( '<h1>jade</h1>' );
+            heading : 'pug'
+        } ) ).resolves.toBe( '<h1>pug</h1>' );
 
     } );
 } );
+
+

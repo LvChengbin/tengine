@@ -39,6 +39,10 @@ const list = {
     lodash : {
         template : '<%=engine %>-<%=title %>',
         output : 'tengine-lodash'
+    },
+    pug : {
+        template : 'title= engine\nh1=title',
+        output : '<title>tengine</title><h1>pug</h1>'
     }
 };
 
