@@ -116,11 +116,11 @@ describe( 'read file', () => {
 
 
     afterAll( () => {
-        for( const file of files ) fs.unlink( file ) 
+        for( const file of files ) fs.unlinkSync( file );
     } );
 
     it( 'should read content from file', () => {
-        const name = path.join( dir, uuid() );
+        const name = path.join( dir, uuid() + '.tmpl' );
         files.push( name );
         const init = uuid();
         fs.writeFileSync( name, init );
@@ -128,7 +128,7 @@ describe( 'read file', () => {
     } ); 
 
     it( 'should have cached the file', async () => {
-        const name = path.join( dir, uuid() );
+        const name = path.join( dir, uuid() + '.tmpl' );
         files.push( name );
         const init = uuid();
         fs.writeFileSync( name, init );
@@ -139,7 +139,7 @@ describe( 'read file', () => {
     } );
 
     it( 'should not cache the file', async () => {
-        const name = path.join( dir, uuid() );
+        const name = path.join( dir, uuid() + '.tmpl' );
         files.push( name );
         const init = uuid();
         fs.writeFileSync( name, init );
